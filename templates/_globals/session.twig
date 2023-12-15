@@ -1,0 +1,17 @@
+{% do _globals.set({
+  richText: "prose lg:prose-lg prose-ci dark:prose-invert",
+  richTextIntro: "prose-lg lg:prose-xl prose-ci dark:prose-invert",
+  richTextSmall: "prose prose-ci dark:prose-invert",
+  blocksExtraLarge: "max-w-screen-xl mx-auto px-4",
+  blocksLarge: "max-w-screen-lg mx-auto px-4",
+  blocksMedium: "max-w-screen-md mx-auto px-4",
+  eagerLoading: ["blocks", "blocks.blockImages:images", "blocks.blockTeaser:image"]
+}) %}
+
+{#{% set eagerLoading = {
+  blocks: ["blocks", "blocks.blockImages:images", "blocks.blockTeaser:image"]
+} %}#}
+
+{% block layout %}
+
+{% endblock %}

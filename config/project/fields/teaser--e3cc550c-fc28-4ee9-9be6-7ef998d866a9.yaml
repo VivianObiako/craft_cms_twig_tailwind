@@ -1,0 +1,23 @@
+columnSuffix: vjxhpesm
+contentColumnType: text
+fieldGroup: 84aef975-f98d-44f6-8450-a081ab798069 # Common
+handle: teaser
+instructions: null
+name: Teaser
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  ckeConfig: e02c8ed2-4f94-4a1b-9be5-0fb445706b91 # Simple
+  columnType: text
+  defaultTransform: null
+  enableSourceEditingForNonAdmins: false
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

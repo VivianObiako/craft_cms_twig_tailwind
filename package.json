@@ -1,0 +1,32 @@
+{
+  "name": "lazy-craft-cms-4-boilerplate",
+  "version": "1.0.0",
+  "description": "Simple lazy responsive starter kit for CraftCMS 4 Projects.",
+  "author": {
+    "email": "webworker.ag@gmail.com",
+    "name": "Andi Grether",
+    "url": "https://webworker.me/"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "alpinejs": "^3.13.2",
+    "flowbite": "^2.2.0",
+    "lazysizes": "^5.3.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.6",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^12.0.1",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.5.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-restart": "^0.3.1"
+  }
+}

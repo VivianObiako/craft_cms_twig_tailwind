@@ -1,0 +1,13 @@
+<section class="blocks blocks--transparent">
+  <div class="{{ _globals.get('blocksLarge') }}">
+    {% include "_components/teaser" with {
+      data: {
+        headline: self.headline,
+        text: self.text,
+        image: self.image.collect().first() ?? null,
+        imageRight: self.imageRight,
+        button: self.button
+      }
+    } only %}
+  </div>
+</section>

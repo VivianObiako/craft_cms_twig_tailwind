@@ -1,0 +1,77 @@
+{# Set Defaults #}
+{% set defaults = {
+  data: {
+    headline: "",
+    topline: "",
+    text: "",
+    date: null,
+    image: null,
+    button: null,
+    classWrapper: "flex flex-col bg-white dark:bg-black rounded-lg shadow-lg overflow-hidden",
+    classContent: "",
+    classImage: "",
+    classText: "p-6",
+    classRichText: "prose dark:prose-invert",
+    classButton: "px-6 pb-6 mt-auto",
+    aspectW: "16",
+    aspectH: "9"
+  }
+} %}
+
+{% set styles = {
+  cardContainer: "sprig-card flex flex-col w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700",
+  detailContainer: "flex items-center justify-between pb-2 mb-1 border-b dark:border-gray-700",
+  headingLink: "text-2xl font-bold tracking-tight text-gray-900 dark:text-white",
+  context: "mb-3 font-normal text-gray-700 dark:text-gray-400",
+} %}
+
+{# Merge props #}
+{% set props = {
+  data: data is defined ? defaults.data|merge(data) : defaults.data
+} %}
+
+<div class="{{ styles.cardContainer }}">
+	{% if props.data.image %}
+		<div class="{{ props.data.classImage }} aspect-[{{ props.data.aspectW }}/{{ props.data.aspectH }}]">
+			{% include "_components/image.twig" with {
+          data: {
+            image: props.data.image,
+            class: "rounded-t-lg",
+            sizes: [640],
+            ratio: props.data.aspectW ~ ":" ~ props.data.aspectH
+          }
+        } only %}
+		</div>
+	{% endif %}
+	<div class="p-5 flex flex-col flex-1">
+		{% if props.data.topline or props.data.date %}
+			<div class="{{ styles.detailContainer }}">
+				{% if props.data.topline %}
+					<p class="text-beta dark:text-beta-400">
+						{{ props.data.topline }}
+					</p>
+				{% endif %}
+				{% if props.data.date %}
+					<p class="mb-0 text-sm text-gray-400">
+						{{ props.data.date|date("M d, Y") }}
+					</p>
+				{% endif %}
+			</div>
+		{% endif %}
+		<a href="{{ props.data.button }}">
+			<h5 class="{{ styles.headingLink }}">
+				{{ props.data.headline }}
+			</h5>
+		</a>
+		<p class="{{ styles.context }}">
+			{{ props.data.text }}
+		</p>
+		<div class="mt-auto pt-3">
+			{% include "_components/button.twig" with {
+      data: {
+        link: props.data.button
+      }
+    } only %}
+		</div>
+	</div>
+</div>

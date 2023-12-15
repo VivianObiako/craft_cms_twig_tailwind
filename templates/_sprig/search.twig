@@ -1,0 +1,33 @@
+{% set query = query ?? "" %}
+<div class="relative">
+	<div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+		<svg class="w-4 h-4 text-gray-500 dark:text-gray-400" x-description="Heroicon name: mini/magnifying-glass" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 20 20">
+			<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+		</svg>
+	</div>
+	<input sprig s-trigger="keyup changed delay:300ms" s-replace="#results" type="search" name="query"  id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search! for example: blog or news" value="{{ query }}" required>
+</div>
+
+<div id="results">
+	{% if query %}
+		{% set entries = craft.entries.section(["news", "pages"]).search(query).all() %}
+		<ul class="p-6 mt-4 space-y-4 bg-white rounded-md shadow-md dark:bg-black">
+			{% if entries %}
+				{% for entry in entries %}
+					<li>
+						<a class="inline-flex items-center text-beta dark:text-beta-300 hover:underline" href="{{ entry.url }}">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+							</svg>
+							{{ entry.title }}
+							<span class="text-gray-500">&nbsp;/{{ entry.section }}</span>
+						</a>
+					</li>
+				{% endfor %}
+			{% else %}
+				<li class="flex items-center justify-center">
+					<span class="inline-flex mr-2 text-5xl">😱</span>no result</li>
+			{% endif %}
+		</ul>
+	{% endif %}
+</div>

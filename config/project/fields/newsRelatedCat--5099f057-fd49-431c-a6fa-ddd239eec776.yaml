@@ -1,0 +1,35 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 30cbaa4c-aacc-4b92-a838-0dbd76852ac4 # News
+handle: newsRelatedCat
+instructions: null
+name: 'News - Category'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: 1
+  localizeRelations: false
+  maintainHierarchy: true
+  maxRelations: null
+  minRelations: null
+  selectionCondition:
+    __assoc__:
+      -
+        - elementType
+        - craft\elements\Entry
+      -
+        - fieldContext
+        - global
+      -
+        - class
+        - craft\elements\conditions\entries\EntryCondition
+  selectionLabel: null
+  showSiteMenu: true
+  sources:
+    - 'section:e5432242-1467-4a03-859f-d79e86e35bd3' # Categories
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries
