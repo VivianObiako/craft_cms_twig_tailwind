@@ -17,10 +17,9 @@
 			}
 		</style>
 		<link rel="stylesheet" href="{{ craft.vite.entry("app.css") }}"/>
+		<link rel="stylesheet" href="{{ craft.vite.entry("flowbite.css") }}"/>
 		{% include "_globals/favicons" %}
 		{% include "_globals/fonts" %}
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet"/>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 	</head>
 	<body class="h-full font-sans text-base antialiased text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-900">
 		{% include "_globals/nav" %}
@@ -28,5 +27,6 @@
 		{% include "_globals/footer" %}
 		{{ craft.vite.register("src/js/app.js") }}
 		{% do sprig.registerScript %}
+		<script src="{{ craft.vite.entry("flowbite.js") }}"></script>
 	</body>
 </html>{%- endblock -%}

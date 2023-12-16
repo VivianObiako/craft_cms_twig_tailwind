@@ -3,11 +3,22 @@
     "file": "assets/app-7fe104fc.css",
     "src": "src/js/app.css"
   },
+  "src/js/flowbite.css": {
+    "file": "assets/flowbite-7fe104fc.css",
+    "src": "src/js/flowbite.css"
+  },
   "src/js/app.js": {
     "css": [
     ],
     "file": "assets/app-30344950.js",
     "isEntry": true,
     "src": "src/js/app.js"
+  },
+  "src/js/flowbite.js": {
+    "css": [
+    ],
+    "file": "assets/flowbite-30344950.js",
+    "isEntry": true,
+    "src": ""
   }
 }
