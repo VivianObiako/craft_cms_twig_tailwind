@@ -1,8 +1,16 @@
+{% set styles = {
+  container: "max-w-screen-sm px-4 mx-auto text-center",
+  content: "mb-4 text-2xl font-semibold leading-none tracking-tight text-gray-600 dark:text-white",
+  mark: "px-2 text-white bg-blue-600 rounded dark:bg-blue-500",
+} %}
+
 <div x-data="counter()" x-init="fetch()">
-  <div x-cloak x-show="count > 0" class="max-w-screen-sm px-4 mx-auto text-center">
-    <p class="mb-6 text-2xl">
-      There are <span x-text="count" class="text-3xl font-bold text-alpha"></span> news. <a href="/news" class="underline hover:no-underline">Check
-        it out!</a>
+	<div x-cloak x-show="count > 0" class="{{ styles.container }}">
+		<p class="{{ styles.content }}">There are
+			<mark class="{{ styles.mark }}">
+				<span x-text="count"></span>
+				news</mark>.
+      <a href="/news" class="underline"> Check it out!</a>
     </p>
-  </div>
+	</div>
 </div>

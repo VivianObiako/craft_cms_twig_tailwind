@@ -1,25 +1,25 @@
 {% extends "_layouts/base" %}
 
 {% block main %}
-  {% cache using key "entry__home" %}
-    {% do craft.app.elements.eagerLoadElements(
-      className(entry),
-      [entry],
-      [""]|merge(_globals.get("eagerLoading") ?? "")
-    ) %}
+	{% cache using key "entry__home" %}
+	{% do craft.app.elements.eagerLoadElements(
+					      className(entry),
+					      [entry],
+					      [""]|merge(_globals.get("eagerLoading") ?? "")
+					    ) %}
 
-    {% set blocks = entry.blocks.collect() %}
+	{% set blocks = entry.blocks.collect() %}
 
-    {% include "_partials/pageHero.twig" %}
+	{% include "_partials/pageHero.twig" %}
 
-    {% include "_partials/newsCounter" %}
+	{% include "_partials/newsCounter" %}
 
-    <div class="{{ _globals.get("blocksMedium") }}">
-      {{ sprig("_sprig/search") }}
-    </div>
+	<div class="{{ _globals.get("blocksMedium") }}">
+		{{ sprig("_sprig/search") }}
+	</div>
 
-    {% include "_builders" with {
-      blocks: blocks
-    } %}
-  {% endcache %}
+	{% include "_builders" with {
+					      blocks: blocks
+					    } %}
+	{% endcache %}
 {% endblock %}

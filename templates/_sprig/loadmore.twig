@@ -12,6 +12,11 @@
     "sprig-target": "#results",
     "sprig-select": "#results .sprig-card",
     "sprig-swap": "beforeend"
+  },
+  styles: {
+    container: "my-12 mx-auto w-48 text-center",
+    button: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center",
+    spinner: "w-5 h-5 ml-3 text-white htmx-indicator animate-spin",
   }
 } %}
 
@@ -21,26 +26,18 @@
 } %}
 
 <div>
-  {% if props.data.count > props.data.offset + (props.data.entries|length) %}
-    <div class="my-12 text-center">
-      <button id="load-more-oob"
-        sprig
-        s-target="{{props.data["sprig-target"]}}"
-        s-swap="{{props.data["sprig-swap"]}}"
-        s-select="{{props.data["sprig-select"]}}"
-        {# s-indicator="#spinner" #}
-        s-val:offset="{{ props.data.offset + props.data.limit }}"
-        class="btn btn--beta"
-        {{ sprig.trigger == "load-more-oob" ? 's-swap-oob="true"' }}>
-        <span>{{props.data.label}}</span>
-        <svg class="w-5 h-5 ml-3 text-white htmx-indicator animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-      </button>
-    </div>
-  {% else %}
-    {# Swaps the button out-of-band with a dummy button that is hidden #}
-    <button id="load-more-oob" s-swap-oob="true" style="display: none"></button>
-  {% endif %}
+	{% if props.data.count > props.data.offset + (props.data.entries|length) %}
+		<div class="{{ defaults.styles.container }}">
+			<button id="load-more-oob" sprig s-target="{{props.data["sprig-target"]}}" s-swap="{{props.data["sprig-swap"]}}" s-select="{{props.data["sprig-select"]}}" s-val:offset="{{ props.data.offset + props.data.limit }}" class="{{ defaults.styles.button }}" {{ sprig.trigger == "load-more-oob" ? 's-swap-oob="true"' }}>
+				<svg class="{{ defaults.styles.spinner }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24">
+					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+					<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+				</svg>
+				<span class="px-2">{{props.data.label}}</span>
+			</button>
+		</div>
+	{% else %}
+		{# Swaps the button out-of-band with a dummy button that is hidden #}
+		<button id="load-more-oob" s-swap-oob="true" style="display: none"></button>
+	{% endif %}
 </div>
