@@ -1,9 +1,7 @@
 <header class="pb-10 blocks blocks--transparent">
 	<div class="{{ _globals.get('blocksMedium') }}">
 		{% if entry.newsRelatedCat and entry.newsRelatedCat.collect().first() %}
-			<p class="mb-2 text-center text-beta dark:text-beta-400">
-				{{ entry.newsRelatedCat.collect().first() }}
-			</p>
+			<span class="bg-blue-100 text-blue-800 text-md font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ entry.newsRelatedCat.collect().first() }}</span>
 		{% endif %}
 
 		{% if entry.type == "home" %}
