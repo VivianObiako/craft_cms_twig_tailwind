@@ -24,7 +24,7 @@
     } %}
 
 	<div
-		class="flex px-4 {{ prevEntry and nextEntry ? " justify-between" : " justify-end" }}">
+		class="max-w-screen-xl mx-auto flex px-4 {{ prevEntry and nextEntry ? " justify-between" : " justify-end" }}">
 		<!-- Previous Button -->
     {% if prevEntry %}
       <a href="{{ prevEntry.url }}" class="{{ styles.entryLink }}">
